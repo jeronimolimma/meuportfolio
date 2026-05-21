@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado! Mensagem Enviada | Jerônimo Lima</title>
+
+    <!-- Open Graph / LinkedIn (para consistência, mesmo em página de obrigado) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jeronimolima.com.br/obrigado.html">
+    <meta property="og:title" content="Mensagem Enviada! | Jerônimo Lima">
+    <meta property="og:description" content="Sua mensagem foi recebida com sucesso. Jerônimo Lima retornará em breve.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Header -->
+    <header id="header" class="scrolled">
+        <nav class="container">
+            <div class="logo">Jerônimo Lima | <span>Logística</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Início</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="success-page">
+            <div class="container success-content reveal">
+                <img src="img-principal.jpg" alt="Jerônimo Lima" class="success-img">
+                <i class="fas fa-check-circle success-badge"></i>
+                <h2>Mensagem Recebida!</h2>
+                <p>Obrigado pelo contato, Jerônimo Lima retornará em breve. <br>Sua operação está a um passo da alta performance.</p>
+                <div class="hero-btns">
+                    <a href="index.html" class="btn btn-primary">Voltar ao Início</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo">Jerônimo Lima</div>
+                <span class="tagline">Operações & Logística</span>
+                <p style="color: var(--gray); font-size: 0.9rem;">Especialista em alta performance operacional e gestão de cadeia fria.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="index.html#home">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre Mim</a></li>
+                    <li><a href="index.html#blog">Conteúdos</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <ul>
+                    <li><a href="index.html#servicos">Consultoria</a></li>
+                    <li><a href="index.html#servicos">Cadeia Fria</a></li>
+                    <li><a href="index.html#servicos">Treinamentos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="mailto:jeronimo.lima_@outlook.com">jeronimo.lima_@outlook.com</a></li>
+                    <li><a href="https://wa.me/5511983110348">WhatsApp: (11) 98311-0348</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2024 Jerônimo Lima | Operações e Logística. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511983110348" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Remover Loader (Crítico para a página aparecer)
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                if(loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.style.display = 'none', 500);
+                }
+            }, 1000); // Reduzido para 1s para ser mais rápido
+
+            // 2. Menu Mobile (Funcionalidade básica)
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (menuToggle && navLinks) {
+                const menuIcon = menuToggle.querySelector('i');
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('menu-active');
+                    if (menuIcon) {
+                        menuIcon.classList.toggle('fa-bars');
+                        menuIcon.classList.toggle('fa-times');
+                    }
+                });
+            }
+
+            // 3. Animações de Revelação (Essencial para o conteúdo aparecer)
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                reveals.forEach(el => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = el.getBoundingClientRect().top;
+                    const elementVisible = 100;
+                    if (elementTop < windowHeight - elementVisible) {
+                        el.classList.add('active');
+                    }
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+
+            // 4. Scroll Top Button
+            const scrollTop = document.getElementById('scrollTop');
+            if(scrollTop) scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        });
+    </script>
+</body>
+</html>
